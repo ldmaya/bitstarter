@@ -5,22 +5,12 @@ var app = express.createServer(express.logger());
 
 var res = 'not back yet';
 /* * /
-fs.readFile('index.html', function (err, data) {
-  console.log("Read file callback executed");
-  if (err) {
-    console.log("Could not read file" + err);
-    return;
-  }
-  res = data;
-  if(res.isBuffer) {
-    res = res.toString();
-  }
-  console.log("The result from the read is: " + res);
-}
 /* */
 
 app.get('/', function(request, response) {
-    response.send('hola mundo');
+  response.send('hola mundo');
+  var res = fs.readFileSync('index.html');
+  console.log("The result from the read is: " + res.toString());
 });
 
 var port = process.env.PORT || 5000;
