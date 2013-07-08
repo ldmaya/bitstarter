@@ -5,7 +5,7 @@ var app = express.createServer(express.logger());
 
 var res = 'not back yet';
 
-/* */
+/* * /
 fs.readFile('index.html', function (err, data) {
   console.log("Read file callback executed");
   if (err) {
