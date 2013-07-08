@@ -3,14 +3,19 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
+var res = 'not back yet';
+
+fs.readFile('index.html', function (err, data) {
+  console.log("Read file callback executed");
+  if (err) throw err;
+  res = data;
+  if(res.isBuffer) {
+    res = res.toString();
+  }
+  console.log("The result from the read is: " + res);
+}
+
 app.get('/', function(request, response) {
-  fs.readFile('index.html', function (err, data) {
-    if (err) throw err;
-    console.log(data);
-    var res = data;
-    if(res.isBuffer) {
-      res = res.toString();
-    }
     response.send(res);
   });
 });
