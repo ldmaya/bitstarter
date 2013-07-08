@@ -8,9 +8,9 @@ var res = 'not back yet';
 /* */
 
 app.get('/', function(request, response) {
-  response.send('hola mundo');
   var res = fs.readFileSync('index.html');
   console.log("The result from the read is: " + res.toString());
+  response.send(res.toString());
 });
 
 var port = process.env.PORT || 5000;
