@@ -7,7 +7,10 @@ var res = 'not back yet';
 
 fs.readFile('index.html', function (err, data) {
   console.log("Read file callback executed");
-  if (err) throw err;
+  if (err) {
+    console.log("Could not read file" + err);
+    return;
+  }
   res = data;
   if(res.isBuffer) {
     res = res.toString();
@@ -16,7 +19,7 @@ fs.readFile('index.html', function (err, data) {
 }
 
 app.get('/', function(request, response) {
-    response.send(res);
+    response.send('hola mundo');
   });
 });
 
